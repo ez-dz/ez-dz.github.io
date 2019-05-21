@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Canada Map Test</title>
+</head>
+<body>
+
+<button type="button" onclick="test_results()">Check Results</button>
+
+<img src = "https://i.imgur.com/W61j1vT.png">
+
+<script>
+
+var provinces = ["yukon", "northwest territories", "nunavut", "british columbia",
+"alberta", "saskatchewan", "manitoba", "ontario", "quebec"," newfoundland and labrador",
+"new brunswick", "nova scotia", "pei"];
+
+//Create the table
+var ptable = document.createElement("table")
+ptable.style.position = "absolute";
+ptable.style.left = "10px";
+ptable.style.top = "35px";
+for (var i = 0; i < provinces.length; i++) {
+	var row = ptable.insertRow();
+    var cell = row.insertCell();
+    cell.appendChild(document.createTextNode(i+1));
+    var cell = row.insertCell();
+    var data = document.createElement("input")
+    data.id = provinces[i]
+    data.autocomplete = 'off';
+    cell.appendChild(data);
+}
+document.body.appendChild(ptable)
+
+//Check the score
+function test_results(){
+	var score = 0;
+	for (var i = 0; i < provinces.length; i++) {
+    	box = document.getElementById(provinces[i]);
+    	if (box.value.toLowerCase() == provinces[i]){
+        	score = score+1;
+            box.style.borderColor = 'green';
+        }
+        else{
+        	box.style.borderColor = 'red';
+        }
+    }
+    alert("Your score: "+score+"/13")
+}
+
+</script>
+</body>
+</html> 
