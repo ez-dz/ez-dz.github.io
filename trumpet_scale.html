@@ -54,8 +54,10 @@
         <button type="button" onclick="test_results()">Check Results</button>
         </td>
     </tr>
+    <tr>
 </table>
-
+<table id="scores_table">
+</table>
 <script>
 
 //C note scale
@@ -64,10 +66,11 @@ var fingers = ["0", "13", "12", "1", "0", "12", "2", "0"]
 var times = [[89,92],[93,95],[96,98],[99,102],[103,105],[106,109],[110,112],[113,116]]
 
 
-//Random note image
+//Random note
 var index = Math.floor(Math.random() * notes.length)
 
-function get_image(){
+function random_note(){
+    index = Math.floor(Math.random() * notes.length);
     document.getElementById("notePic").src = "images/"+notes[index]+".png";
 }
 
@@ -76,11 +79,18 @@ function get_sound(){
     document.getElementById("player").src=video_url;
 }
 
-get_image();
+function reset_game(){
+    turn = 0;
+    score = 0;
+    random_note();
+}
 
-var score = 0
-var turns = 8
-var turn = 0
+var turn = 0;
+var score = 0;
+var index = 0;
+const turns = 8;
+
+reset_game();
 
 //Check the score
 function test_results(){
@@ -91,15 +101,13 @@ function test_results(){
     if (note_guess == notes[index] && finger_guess != fingers[index]){
         alert("Note correct but fingers are wrong");
     }
-    if (note_guess != notes[index] && finger_guess == fingers[index]){
+    else if (note_guess != notes[index] && finger_guess == fingers[index]){
         alert("Note is wrong but fingers are correct");
     }
-	if (note_guess == notes[index] && finger_guess == fingers[index]){
+	else if (note_guess == notes[index] && finger_guess == fingers[index]){
         alert("Correct!");
     	score = score+1;
-
-        index = Math.floor(Math.random() * notes.length);
-        get_image();
+        random_note();
     }
     else{
         alert("Try again");
@@ -108,7 +116,11 @@ function test_results(){
 
     if (turn>=turns){
      alert("Game Over! \n Your Score "+score+"/"+turns)
-     location.reload();
+     scores_table = document.getElementById('scores_table');
+     row = scores_table.insertRow();
+     cell = row.insertCell();
+     row.innerHTML = 'Round '+scores_table.rows.length+': '+score+'/'+turns;
+     reset_game();
     }
 }
 
