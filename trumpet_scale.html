@@ -4,7 +4,7 @@
 <title>Trumpet Scale</title>
 </head>
 <body>
-
+<center>
 <h1> Trumpet C Scale </h1>
 
 <img src = "" id="notePic">
@@ -12,35 +12,32 @@
 <table>
     <tr>
         <td>
-        <label> Play Note:</label>
+        <button type="button" onclick="get_sound()">Play Note</button>
         </td>
         <td>
         <iframe id="player" width="20" height="20"></iframe>
         </td>
-        <td>
-        <button type="button" onclick="get_sound()">reload</button>
-        </td>
     </tr>
     <tr>
         <td>
-        <label for="note_menu">Guess The Note:</label>
+        <label for="note_menu">Guess the Note:</label>
         </td>
         <td>
         <select name="note_menu" id="note_menu">
-            <option value="a">c</option>
-            <option value="b">d</option>
-            <option value="c">e</option>
+            <option value="a">a</option>
+            <option value="b">b</option>
+            <option value="c">c</option>
+            <option value="d">d</option>
+            <option value="d">e</option>
             <option value="d">f</option>
             <option value="d">g</option>
-            <option value="d">a</option>
-            <option value="d">b</option>
             <option value="d">c5</option>
         </select>
         </td>
     </tr>
     <tr>
         <td>
-        <label for="finger_menu">Guess The Fingers:</label>
+        <label for="finger_menu">Guess the Fingers:</label>
         </td>
         <td>
         <select name="finger_menu" id="finger_menu">
@@ -75,12 +72,11 @@ function get_image(){
 }
 
 function get_sound(){
-    video_url = 'https://www.youtube.com/embed/XFSKGpUfcuc?start='+times[index][0]+'&end='+times[index][1];
+    video_url = 'https://www.youtube.com/embed/XFSKGpUfcuc?autoplay=1&controls=0&start='+times[index][0]+'&end='+times[index][1];
     document.getElementById("player").src=video_url;
 }
 
 get_image();
-get_sound();
 
 var score = 0
 var turns = 8
@@ -104,7 +100,6 @@ function test_results(){
 
         index = Math.floor(Math.random() * notes.length);
         get_image();
-        get_sound();
     }
     else{
         alert("Try again");
@@ -118,6 +113,6 @@ function test_results(){
 }
 
 </script>
-
+</center>
 </body>
 </html> 
