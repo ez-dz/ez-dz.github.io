@@ -3,19 +3,35 @@
 <head>
 <title>Trumpet Scale</title>
 </head>
+<style>
+    body {
+        font-size: 40px;
+    }
+    select {
+        font-size: 40px;
+    }
+    button {
+      background-color: #4CAF50; /* Green */
+      color:  white;
+      font-size: 40px;
+      cursor: pointer;
+    }
+}
+</style>
 <body>
 <center>
 <h1> Trumpet C Scale </h1>
 
 <img src = "" id="notePic">
 <br>
-<table>
+
+<table style="width:30%">
     <tr>
         <td>
         <button type="button" onclick="get_sound()">Play Note</button>
         </td>
         <td>
-        <iframe id="player" width="20" height="20"></iframe>
+        <iframe id="player" width="25" height="25"></iframe>
         </td>
     </tr>
     <tr>
@@ -49,13 +65,10 @@
         </select>
         </td>
     </tr>
-    <tr>
-        <td>
-        <button type="button" onclick="test_results()">Check Results</button>
-        </td>
-    </tr>
-    <tr>
 </table>
+
+<button type="button" onclick="test_results()">Check Results</button>
+
 <table id="scores_table">
 </table>
 <script>
