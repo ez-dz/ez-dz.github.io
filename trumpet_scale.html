@@ -51,20 +51,6 @@
         </select>
         </td>
     </tr>
-    <tr>
-        <td>
-        <label for="finger_menu">Guess the Fingers:</label>
-        </td>
-        <td>
-        <select name="finger_menu" id="finger_menu">
-            <option value="a">0</option>
-            <option value="b">1</option>
-            <option value="c">12</option>
-            <option value="d">13</option>
-            <option value="d">2</option>
-        </select>
-        </td>
-    </tr>
 </table>
 
 <button type="button" onclick="test_results()">Check Results</button>
@@ -75,7 +61,6 @@
 
 //C note scale
 var notes = ["c", "d", "e", "f", "g", "a", "b", "c5"];
-var fingers = ["0", "13", "12", "1", "0", "12", "2", "0"]
 var times = [[89,92],[93,95],[96,98],[99,102],[103,105],[106,109],[110,112],[113,116]]
 
 
@@ -110,14 +95,7 @@ function test_results(){
     note_menu = document.getElementById("note_menu");
     finger_menu = document.getElementById("finger_menu");
     var note_guess = note_menu.options[note_menu.selectedIndex].text;
-    var finger_guess = finger_menu.options[finger_menu.selectedIndex].text;
-    if (note_guess == notes[index] && finger_guess != fingers[index]){
-        alert("Note correct but fingers are wrong");
-    }
-    else if (note_guess != notes[index] && finger_guess == fingers[index]){
-        alert("Note is wrong but fingers are correct");
-    }
-	else if (note_guess == notes[index] && finger_guess == fingers[index]){
+	if (note_guess == notes[index]){
         alert("Correct!");
     	score = score+1;
         random_note();
