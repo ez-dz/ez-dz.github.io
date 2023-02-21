@@ -1,0 +1,54 @@
+
+<html>
+<head>
+<title>Metro Vancouver Cities Test</title>
+</head>
+<body>
+
+<button type="button" onclick="test_results()">Check Results</button>
+
+<img src = "images/metro_vancouver_map.jpg" width=800 height=600>
+
+<script>
+
+var cities = ["vancouver", "burnaby", "new westminster", "richmond", "delta",
+"port moody", "surrey", "coquitlam", "port coquitlam", "white rock", "pitt meadows",
+"langley", "langley township", "maple ridge", "belcarra", "north vancouver district",
+"north vancouver", "west vancouver"];
+
+//Create the table
+var ptable = document.createElement("table")
+ptable.style.position = "absolute";
+ptable.style.left = "10px";
+ptable.style.top = "35px";
+for (var i = 0; i < cities.length; i++) {
+	var row = ptable.insertRow();
+    var cell = row.insertCell();
+    cell.appendChild(document.createTextNode(i+1));
+    var cell = row.insertCell();
+    var data = document.createElement("input")
+    data.id = cities[i]
+    data.autocomplete = 'off';
+    cell.appendChild(data);
+}
+document.body.appendChild(ptable)
+
+//Check the score
+function test_results(){
+	var score = 0;
+	for (var i = 0; i < cities.length; i++) {
+    	box = document.getElementById(cities[i]);
+    	if (box.value.toLowerCase() == cities[i]){
+        	score = score+1;
+            box.style.borderColor = 'green';
+        }
+        else{
+        	box.style.borderColor = 'red';
+        }
+    }
+    alert("Your score: "+score+"/13")
+}
+
+</script>
+</body>
+</html> 
